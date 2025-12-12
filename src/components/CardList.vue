@@ -9,9 +9,7 @@
 </script>
 
 <template>
-  <div class="p-8">
-    <p class="text-3xl font-bold mb-10">Все кроссовки</p>
-    <div class="grid grid-cols-3 gap-5">
+  <div class="grid grid-cols-3 gap-5">
       <Card
           type="catalog"
           title="Мужские кроссовки Nike Blazer Mid Suede"
@@ -42,7 +40,6 @@
           :onClickAdd="onClickAdd"
           :onClickLike="onClickLike"
       />
-    </div>
   </div>
 </template>
 
