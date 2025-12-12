@@ -13,6 +13,7 @@
     <p class="text-3xl font-bold mb-10">Все кроссовки</p>
     <div class="grid grid-cols-3 gap-5">
       <Card
+          type="catalog"
           title="Мужские кроссовки Nike Blazer Mid Suede"
           imageUrl="./src/public/sneakers/sneakers-1.jpg"
           :price="5000"
@@ -22,6 +23,7 @@
           :onClickLike="onClickLike"
       />
       <Card
+          type="catalog"
           title="Мужские кроссовки Nike Blazer Mid Suede"
           imageUrl="./src/public/sneakers/sneakers-1.jpg"
           :price="5000"
@@ -31,6 +33,7 @@
           :onClickLike="onClickLike"
       />
       <Card
+          type="catalog"
           title="Мужские кроссовки Nike Blazer Mid Suede"
           imageUrl="./src/public/sneakers/sneakers-1.jpg"
           :price="5000"
