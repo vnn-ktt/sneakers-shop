@@ -29,13 +29,17 @@
       }
 
       const { data } = await axios.get(
-        `https://604781a0efa572c1.mokky.dev/items`,
+        `https://db8e4288b5ac21f4.mokky.dev/items`,
         { params }
       );
-      items.value = data.slice(0, 12);
+      items.value = data;
     } catch (e) {
       console.error(e);
     }
+  };
+
+  const fetchLiked = async() => {
+
   };
 
   onMounted(fetchItems);
