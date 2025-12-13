@@ -19,7 +19,7 @@
   >
     <div @click="onClickLike">
       <img
-          :src="isLiked ? './src/public/like-2.svg' : './src/public/like-1.svg' "
+          :src="isLiked ? 'public/like-2.svg' : 'public/like-1.svg' "
           alt="Like"
       />
     </div>
@@ -40,7 +40,7 @@
       </div>
       <div @click="onClickAdd">
         <img
-            :src="isCarted ? './src/public/plus.svg' : './src/public/checked.svg' "
+            :src="isCarted ? 'public/plus.svg' : 'public/checked.svg' "
             alt="Plus"
         />
       </div>
@@ -57,7 +57,7 @@
         <span>{{ price }}</span>
         <div @click="onClickDelete">
           <img
-              src="../public/close.svg"
+              src="public/close.svg"
               alt="Close"
           />
         </div>

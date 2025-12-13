@@ -22,7 +22,7 @@ const onClickDelete = () => {
         <Card
             type="cart"
             title="Nike Blazer Mid Suede FDSLj lkfdsjfosdj fdskl fjds iodfjaioijsdfjiosdj"
-            imageUrl="./src/public/sneakers/sneakers-1.jpg"
+            imageUrl="public/sneakers/sneakers-1.jpg"
             :price="5000"
             :isCarted="false"
             :isLiked="false"
@@ -31,7 +31,7 @@ const onClickDelete = () => {
         <Card
             type="cart"
             title="Nike Blazer Mid Suede FDSLj lkfdsjfosdj fdskl fjds iodfjaioijsdfjiosdj"
-            imageUrl="./src/public/sneakers/sneakers-1.jpg"
+            imageUrl="public/sneakers/sneakers-1.jpg"
             :price="5000"
             :isCarted="false"
             :isLiked="false"
