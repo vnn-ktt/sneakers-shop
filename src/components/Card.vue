@@ -1,15 +1,13 @@
 <script setup lang="ts">
-  defineProps<{
-    type: string,
-    imageUrl: string,
-    title: string,
-    price: number,
-    isLiked: boolean,
-    isCarted: boolean,
+  import {IProduct} from "@/types/product";
+  import {TProductCardType} from "@/types/product";
+  interface IProductCardProps extends IProduct {
+    type: TProductCardType;
     onClickLike?: (e: MouseEvent) => void,
     onClickAdd?: (e: MouseEvent) => void,
     onClickDelete?: (e: MouseEvent) => void,
-  }>();
+  }
+  defineProps<IProductCardProps>();
 </script>
 
 <template>
@@ -40,7 +38,7 @@
       </div>
       <div @click="onClickAdd">
         <img
-            :src="isCarted ? 'public/plus.svg' : 'public/checked.svg' "
+            :src="isCarted ? 'public/checked.svg' : 'public/plus.svg' "
             alt="Plus"
         />
       </div>

@@ -1,8 +1,10 @@
 <script setup lang="ts">
   import CardList from "@/components/CardList.vue";
-  import Cart from "@/components/Cart.vue";
-  import axios from "axios";
-  import { onMounted, ref, watch, reactive } from "vue";
+  //import Cart from "@/components/Cart.vue";
+  import { getProducts } from "@/api/product";
+  import { getFavourites } from "@/api/product";
+  import { getCarted } from "@/api/product";
+  import { onMounted, ref, watch, reactive, provide } from "vue";
 
   const items = ref([]);
   const filters = reactive({
@@ -33,13 +35,14 @@
         { params }
       );
       items.value = data;
+      console.log(data);
     } catch (e) {
       console.error(e);
     }
   };
 
-  const fetchLiked = async() => {
-
+  const likeItem = async (item) => {
+      item.isLiked = true
   };
 
   onMounted(fetchItems);

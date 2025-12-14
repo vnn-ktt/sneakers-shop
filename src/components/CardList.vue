@@ -1,24 +1,10 @@
 <script setup lang="ts">
   import Card from "@/components/Card.vue";
-
-  interface IItem {
-    id: number,
-    title: string,
-    price: number,
-    imageUrl: string
-  }
+  import { IProduct } from "@/types/product";
 
   defineProps<{
-    items: IItem[]
+    items: IProduct[]
   }>();
-
-  const onClickLike = () => {
-    alert("like clicked");
-  };
-  const onClickAdd = () => {
-    alert("add clicked");
-  };
-
 </script>
 
 <template>
@@ -30,14 +16,10 @@
           :title="item.title"
           :imageUrl="'public' + item.imageUrl"
           :price="item.price"
-          :isCarted="true"
-          :isLiked="false"
-          :onClickAdd="onClickAdd"
-          :onClickLike="onClickLike"
+          :isCarted="item.isCarted"
+          :isLiked="item.isLiked"
+          :onClickAdd="undefined"
+          :onClickLike="undefined"
       />
   </div>
 </template>
-
-<style scoped>
-
-</style>
