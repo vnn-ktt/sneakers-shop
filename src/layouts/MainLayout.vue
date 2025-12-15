@@ -1,5 +1,17 @@
 <script setup lang="ts">
   import {RouterView} from "vue-router";
+  import { inject } from "vue";
+
+  const openCart = inject<() => void>(
+      "openCart",
+      () => { console.warn("openCart is not provided to this context"); }
+  );
+
+  const toggleCartHeader = () => {
+    if (openCart) {
+      openCart();
+    }
+  }
 </script>
 
 <template>
@@ -14,9 +26,14 @@
       </div>
 
       <ul class="flex items-center gap-10 text-gray-500 font-bold">
-        <li class="flex items-center gap-3 hover:text-black cursor-pointer">
-          <img src="public/cart.svg" alt="Cart">
-          1200 rub
+        <li>
+          <button
+              class="flex items-center gap-3 hover:text-black cursor-pointer"
+              @click="toggleCartHeader"
+          >
+            <img src="public/cart.svg" alt="Cart">
+            1200 rub
+          </button>
         </li>
         <li class="flex items-center gap-3 hover:text-black cursor-pointer">
           <img src="public/heart.svg" alt="Heart">

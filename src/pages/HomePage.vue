@@ -3,9 +3,7 @@
   import CardList from "@/components/CardList.vue";
   import Cart from "@/components/Cart.vue";
   import {
-    getProducts,
-    getLikedProducts,
-    getCartedProducts
+    getProducts
   } from "@/api/product";
   import {
     IProduct
@@ -17,6 +15,7 @@
     sortBy: 'title',
     title: '*'
   });
+  const isCartOpen = ref(false);
   const onSortBy = (evt: Event) => {
     if (!evt.target) return;
     filters.sortBy =
@@ -33,7 +32,11 @@
   const cartProduct = (item: IProduct) => {
     item.isCarted = !item.isCarted;
   };
+  const openCart = () => {
+    isCartOpen.value = true;
+  };
 
+  provide("openCart", openCart);
   provide("onLikeProduct", likeProduct);
   provide("onCartProduct", cartProduct);
   onMounted(async () => {
@@ -70,6 +73,10 @@
       </div>
     </div>
     <CardList :items="items" />
-    <!--<Cart />-->
+    <Cart
+        v-if="isCartOpen"
+        ref="cartRef"
+        @close="isCartOpen = false"
+    />
   </div>
 </template>
