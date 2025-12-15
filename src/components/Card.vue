@@ -1,11 +1,12 @@
 <script setup lang="ts">
-  import {IProduct} from "@/types/product";
-  import {TProductCardType} from "@/types/product";
+  import {
+    IProduct,
+    TProductCardType
+  } from "@/types/product";
   interface IProductCardProps extends IProduct {
     type: TProductCardType;
     onClickLike?: (e: MouseEvent) => void,
-    onClickAdd?: (e: MouseEvent) => void,
-    onClickDelete?: (e: MouseEvent) => void,
+    onClickAdd?: (e: MouseEvent) => void
   }
   defineProps<IProductCardProps>();
 </script>
@@ -22,14 +23,14 @@
       />
     </div>
     <img
-        class="mt-2 mb-2"
+        class="w-30 h-30 mx-auto mt-2 mb-2"
         :src="imageUrl"
         alt="Sneaker"
     />
     <p
         class="mb-2">{{ title }}
     </p>
-    <div class="flex justify-between">
+    <div class="flex justify-between items-end">
       <div class="flex flex-col">
         <span class="text-slate-400">
           Цена

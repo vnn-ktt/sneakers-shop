@@ -53,7 +53,7 @@ vue-sneakers-shop/
 │   ├── router/                   !Конфигурация маршрутизатора
 │   │   └── index.js
 │   ├── App.vue                   !Корневой компонент
-│   └── main.js                   !Точка входа
+│   └── main.ts                   !Точка входа
 ├── .gitignore
 ├── index.html
 ├── package.json

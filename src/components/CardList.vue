@@ -1,9 +1,26 @@
 <script setup lang="ts">
+  import { inject } from "vue";
   import Card from "@/components/Card.vue";
-  import { IProduct } from "@/types/product";
+  import {
+    IProduct
+  } from "@/types/product";
 
+  const onLikeProduct =
+      inject<(item: IProduct) => void>('onLikeProduct', () => {
+        console.warn('onLikeProduct not provided')
+      });
+  const onCartProduct =
+      inject<(item: IProduct) => void>('onCartProduct', () => {
+        console.warn('onCartProduct not provided')
+      });
+  const handleLike = (item: IProduct) => {
+    return () => onLikeProduct(item);
+  }
+  const handleCart = (item: IProduct) => {
+    return () => onCartProduct(item);
+  }
   defineProps<{
-    items: IProduct[]
+    items: IProduct[];
   }>();
 </script>
 
@@ -12,14 +29,15 @@
       <Card
           v-for="item in items"
           :key="item.id"
+          :id="item.id"
           type="catalog"
           :title="item.title"
           :imageUrl="'public' + item.imageUrl"
           :price="item.price"
           :isCarted="item.isCarted"
           :isLiked="item.isLiked"
-          :onClickAdd="undefined"
-          :onClickLike="undefined"
+          :onClickAdd="handleCart(item)"
+          :onClickLike="handleLike(item)"
       />
   </div>
 </template>

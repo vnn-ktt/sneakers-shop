@@ -1,5 +1,5 @@
 type TQueryValue = string | number | boolean;
-export type TQueryParams = Record<string, TQueryValue>;
+export type IQueryParams = Record<string, TQueryValue>;
 export interface IProductLiked {
     id: string;
     productId: string;

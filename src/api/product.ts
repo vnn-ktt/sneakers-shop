@@ -1,14 +1,14 @@
 import axios from "axios";
 import { IProduct } from "@/types/product";
 import {
-    TQueryParams,
+    IQueryParams,
     IProductCarted,
     IProductLiked
 } from "@/types/api";
 
 export const getProducts =
     async (
-        params: TQueryParams
+        params: IQueryParams
     ): Promise<IProduct[]> => {
     const response = await axios.get(
         `https://db8e4288b5ac21f4.mokky.dev/items`,

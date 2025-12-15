@@ -1,60 +1,59 @@
 <script setup lang="ts">
-  import CardList from "@/components/CardList.vue";
-  //import Cart from "@/components/Cart.vue";
-  import { getProducts } from "@/api/product";
-  import { getFavourites } from "@/api/product";
-  import { getCarted } from "@/api/product";
   import { onMounted, ref, watch, reactive, provide } from "vue";
+  import CardList from "@/components/CardList.vue";
+  import Cart from "@/components/Cart.vue";
+  import {
+    getProducts,
+    getLikedProducts,
+    getCartedProducts
+  } from "@/api/product";
+  import {
+    IProduct
+  } from "@/types/product";
+  import { IQueryParams } from "@/types/api";
 
-  const items = ref([]);
-  const filters = reactive({
+  const items = ref<IProduct[]>([]);
+  const filters = reactive<IQueryParams>({
     sortBy: 'title',
-    searchQuery: ''
+    title: '*'
   });
-
-  const onSortState = (evt) => {
-    filters.sortBy = evt.target.value;
+  const onSortBy = (evt: Event) => {
+    if (!evt.target) return;
+    filters.sortBy =
+        `*${(evt.target as HTMLSelectElement)?.value}*` || '';
+  };
+  const onFindTitle = (evt: Event) => {
+    if (!evt.target) return;
+    filters.title =
+        `*${(evt.target as HTMLSelectElement)?.value}*` || '';
+  };
+  const likeProduct = (item: IProduct) => {
+    item.isLiked = !item.isLiked;
+  };
+  const cartProduct = (item: IProduct) => {
+    item.isCarted = !item.isCarted;
   };
 
-  const onFindQueryChange = (evt) => {
-    filters.searchQuery = evt.target.value;
-  };
-
-  const fetchItems = async () => {
-    try {
-      const params = {
-        sortBy: filters.sortBy,
-      }
-
-      if(filters.searchQuery) {
-        params.title = `*${filters.searchQuery}*`
-      }
-
-      const { data } = await axios.get(
-        `https://db8e4288b5ac21f4.mokky.dev/items`,
-        { params }
-      );
-      items.value = data;
-      console.log(data);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  const likeItem = async (item) => {
-      item.isLiked = true
-  };
-
-  onMounted(fetchItems);
-  watch(filters, fetchItems);
+  provide("onLikeProduct", likeProduct);
+  provide("onCartProduct", cartProduct);
+  onMounted(async () => {
+    items.value = await getProducts(filters);
+  });
+  watch(filters, async () => {
+    items.value = await getProducts(filters)
+  });
 </script>
-
 <template>
   <div class="p-10">
     <div class="flex justify-between">
       <h2 class="text-3xl font-bold mb-10">Все кроссовки</h2>
       <div class="flex gap-4">
-        <select name="select" id="select" class="h-max py-2 px-3 border rounded-md outline-none" @change="onSortState">
+        <select
+            name="select"
+            id="select"
+            class="h-max py-2 px-3 border rounded-md outline-none"
+            @change="onSortBy"
+        >
           <option value="name">По названию</option>
           <option value="price">По цене (дешевые)</option>
           <option value="-price">По цене (дорогие)</option>
@@ -62,7 +61,7 @@
         <div class="relative">
           <img class="absolute left-4 top-3" src="public/search.svg" alt="Search"/>
           <input 
-            @input="onFindQueryChange"
+            @input="onFindTitle"
             class="border rounded-md py-2 pl-10 pr-4 outline-none focus:border-gray-400" 
             placeholder="Поиск..." 
             type="text"
