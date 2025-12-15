@@ -13,12 +13,7 @@
       inject<(item: IProduct) => void>('onCartProduct', () => {
         console.warn('onCartProduct not provided')
       });
-  const handleLike = (item: IProduct) => {
-    return () => onLikeProduct(item);
-  }
-  const handleCart = (item: IProduct) => {
-    return () => onCartProduct(item);
-  }
+
   defineProps<{
     items: IProduct[];
   }>();
@@ -36,8 +31,8 @@
           :price="item.price"
           :isCarted="item.isCarted"
           :isLiked="item.isLiked"
-          :onClickAdd="handleCart(item)"
-          :onClickLike="handleLike(item)"
+          :onClickLike="() => onLikeProduct(item)"
+          :onClickAdd="() => onCartProduct(item)"
       />
   </div>
 </template>

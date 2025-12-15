@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { onMounted, ref, watch, reactive, provide } from "vue";
   import CardList from "@/components/CardList.vue";
-  import Cart from "@/components/Cart.vue";
+  import AsidePanel from "@/components/AsidePanel.vue";
   import {
     getProducts
   } from "@/api/product";
@@ -15,7 +15,7 @@
     sortBy: 'title',
     title: '*'
   });
-  const isCartOpen = ref(false);
+
   const onSortBy = (evt: Event) => {
     if (!evt.target) return;
     filters.sortBy =
@@ -32,11 +32,7 @@
   const cartProduct = (item: IProduct) => {
     item.isCarted = !item.isCarted;
   };
-  const openCart = () => {
-    isCartOpen.value = true;
-  };
 
-  provide("openCart", openCart);
   provide("onLikeProduct", likeProduct);
   provide("onCartProduct", cartProduct);
   onMounted(async () => {
@@ -73,10 +69,5 @@
       </div>
     </div>
     <CardList :items="items" />
-    <Cart
-        v-if="isCartOpen"
-        ref="cartRef"
-        @close="isCartOpen = false"
-    />
   </div>
 </template>

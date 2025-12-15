@@ -54,7 +54,7 @@
       <p> {{title}} </p>
       <div class="flex justify-between mt-2">
         <span>{{ price }}</span>
-        <div @click="onClickDelete">
+        <div @click="undefined">
           <img
               src="public/close.svg"
               alt="Close"

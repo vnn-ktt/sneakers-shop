@@ -1,16 +1,20 @@
 <script setup lang="ts">
   import {RouterView} from "vue-router";
-  import { inject } from "vue";
+  import { ref } from "vue";
+  import AsidePanel from "@/components/AsidePanel.vue";
 
-  const openCart = inject<() => void>(
-      "openCart",
-      () => { console.warn("openCart is not provided to this context"); }
-  );
+  const isCartOpen = ref<boolean>(false);
+  const isLikedOpen = ref<boolean>(false);
+  const isProfileOpen = ref<boolean>(false);
 
   const toggleCartHeader = () => {
-    if (openCart) {
-      openCart();
-    }
+    isCartOpen.value = !isCartOpen.value;
+  }
+  const toggleLikedHeader = () => {
+    isLikedOpen.value = !isLikedOpen.value;
+  }
+  const toggleProfileHeader = () => {
+    isProfileOpen.value = !isProfileOpen.value;
   }
 </script>
 
@@ -34,14 +38,25 @@
             <img src="public/cart.svg" alt="Cart">
             1200 rub
           </button>
+          <AsidePanel
+              v-if="isCartOpen"
+              content="cart"
+              @close="isCartOpen = false"
+          />
         </li>
         <li class="flex items-center gap-3 hover:text-black cursor-pointer">
+          <button
+              class="flex items-center gap-3 hover:text-black cursor-pointer"
+              @click="toggleLikedHeader"
+          >
           <img src="public/heart.svg" alt="Heart">
-          Закладки
-        </li>
-        <li class="flex items-center gap-3 hover:text-black cursor-pointer">
-          <img src="public/profile.svg" alt="Profile">
-          Профиль
+            Закладки
+          </button>
+          <AsidePanel
+              v-if="isLikedOpen"
+              content="liked"
+              @close="isLikedOpen = false"
+          />
         </li>
       </ul>
     </header>
