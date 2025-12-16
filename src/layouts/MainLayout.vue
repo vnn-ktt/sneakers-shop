@@ -5,16 +5,12 @@
 
   const isCartOpen = ref<boolean>(false);
   const isLikedOpen = ref<boolean>(false);
-  const isProfileOpen = ref<boolean>(false);
 
   const toggleCartHeader = () => {
     isCartOpen.value = !isCartOpen.value;
   }
   const toggleLikedHeader = () => {
     isLikedOpen.value = !isLikedOpen.value;
-  }
-  const toggleProfileHeader = () => {
-    isProfileOpen.value = !isProfileOpen.value;
   }
 </script>
 

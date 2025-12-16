@@ -1,16 +1,14 @@
 {
+  "extends": "@vue/tsconfig",
   "compilerOptions": {
-    "target": "ES2017",
-    "module": "ESNext",
-    "lib": ["ES2017", "DOM"],
-    "moduleResolution": "Bundler",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "baseUrl": ".",
+    "types": ["bun-types", "vue"],
     "paths": {
-      "@/*": ["src/*"],
-      "public/*": ["public/*"]
+      "@/*": ["src/*"]
     }
-  }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue",
+    "tests/**/*.ts"
+  ]
 }
