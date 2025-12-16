@@ -5,7 +5,3 @@ import MainLayout from "@/layouts/MainLayout.vue";
 <template>
   <MainLayout />
 </template>
-
-<style scoped>
-
-</style>
