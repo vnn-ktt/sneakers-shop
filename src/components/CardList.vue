@@ -1,8 +1,8 @@
 <script setup lang="ts">
   import { inject } from "vue";
   import Card from "@/components/Card.vue";
-  import {
-    IProduct
+  import type {
+    IProduct, TProductCardType
   } from "@/types/product";
 
   const onLikeProduct =
@@ -20,14 +20,14 @@
 </script>
 
 <template>
-  <div class="grid grid-cols-3 gap-5">
+  <div class="grid grid-cols-2 gap-8">
       <Card
           v-for="item in items"
           :key="item.id"
           :id="item.id"
           type="catalog"
           :title="item.title"
-          :imageUrl="'public' + item.imageUrl"
+          :imageUrl="item.imageUrl"
           :price="item.price"
           :isCarted="item.isCarted"
           :isLiked="item.isLiked"

@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import IconArrow from "@/components/icons/IconArrow.vue";
 import Card from "@/components/Card.vue";
-import { IAsideComponentProps } from "@/types/asidePanel";
+import type { IAsideComponentProps } from "@/types/asidePanel";
+import { ref } from "vue";
 
 const emit = defineEmits(
     ["close"]
 );
+
+const totalSum = ref<number>(0);
 
 defineProps<IAsideComponentProps>();
 
@@ -32,7 +35,7 @@ defineProps<IAsideComponentProps>();
             <Card
                 type="cart"
                 title="Nike Blazer Mid Suede FDSLj lkfdsjfosdj fdskl fjds iodfjaioijsdfjiosdj"
-                imageUrl="public/sneakers/sneakers-1.jpg"
+                imageUrl="sneakers/sneakers-1.jpg"
                 :price="5000"
                 :isCarted="false"
                 :isLiked="false"
@@ -40,14 +43,14 @@ defineProps<IAsideComponentProps>();
             />
           </div>
           <div class="flex gap-2">
-            <span> Итого: </span>
-            <div class="flex-1 border-b border-dashed"></div>
-            <b> 12900 руб </b>
-          </div>
-          <div class="flex gap-2">
             <span> Налог: </span>
             <div class="flex-1 border-b border-dashed"></div>
-            <b> 900 руб </b>
+            <b> {{ totalSum * 0.05 }} руб </b>
+          </div>
+          <div class="flex gap-2">
+            <span> Итого: </span>
+            <div class="flex-1 border-b border-dashed"></div>
+            <b> {{ totalSum }} руб </b>
           </div>
           <button
               class="mt-7 transition bg-lime-500 w-full rounded-xl py-3 text-white disabled:bg-slate-300 hover:"

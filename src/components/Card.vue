@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import {
+  import type {
     IProduct,
     TProductCardType
   } from "@/types/product";
@@ -14,11 +14,11 @@
 <template>
   <div
       v-if="type === 'catalog'"
-      class="relative border border-slate-100 rounded-xl p-8 cursor-pointer hover:-translate-y-2 hover:shadow-xl transition"
+      class="relative border flex justify-between flex-col border-slate-100 rounded-xl p-8 cursor-pointer hover:-translate-y-2 hover:shadow-xl transition"
   >
     <div @click="onClickLike">
       <img
-          :src="isLiked ? 'public/like-2.svg' : 'public/like-1.svg' "
+          :src="isLiked ? 'like-2.svg' : 'like-1.svg' "
           alt="Like"
       />
     </div>
@@ -39,7 +39,7 @@
       </div>
       <div @click="onClickAdd">
         <img
-            :src="isCarted ? 'public/checked.svg' : 'public/plus.svg' "
+            :src="isCarted ? 'checked.svg' : 'plus.svg' "
             alt="Plus"
         />
       </div>
@@ -56,7 +56,7 @@
         <span>{{ price }}</span>
         <div @click="undefined">
           <img
-              src="public/close.svg"
+              src="/close.svg"
               alt="Close"
           />
         </div>

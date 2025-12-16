@@ -3,7 +3,7 @@
   "compilerOptions": {
     "types": ["bun-types", "vue"],
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [

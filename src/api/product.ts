@@ -1,6 +1,6 @@
 import axios from "axios";
-import { IProduct } from "@/types/product";
-import {
+import type { IProduct } from "@/types/product";
+import type {
     IQueryParams,
     IProductCarted,
     IProductLiked
@@ -14,6 +14,7 @@ export const getProducts =
         `https://db8e4288b5ac21f4.mokky.dev/items`,
         { params }
     );
+    console.log(response);
     return response.data;
 }
 
