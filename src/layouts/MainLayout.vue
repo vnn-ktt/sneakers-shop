@@ -2,8 +2,10 @@
   import { RouterView } from "vue-router";
   import { ref } from "vue";
   import AsidePanel from "@/components/AsidePanel.vue";
-
-  const totalSum = ref<number>(0);
+  import { useShopStore } from "@/stores/shop";
+  
+  const shopStore = useShopStore();
+  const totalSum = shopStore.getTotalSum;
   const isCartOpen = ref<boolean>(false);
   const isLikedOpen = ref<boolean>(false);
 
@@ -33,7 +35,7 @@
               @click="toggleCartHeader"
           >
             <img src="/cart.svg" alt="Cart">
-            {{ totalSum }} rub
+            {{ totalSum }} $
           </button>
           <AsidePanel
               v-if="isCartOpen"

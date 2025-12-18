@@ -27,12 +27,13 @@ defineProps<IAsideComponentProps>();
               class="opacity-30 cursor-pointer rotate-180 hover:opacity-90 transition hover:-translate-x-1"
           ></IconArrow>
           <h2 class="text-2xl font-bold">
-            Корзина
+            your cart
           </h2>
         </div>
         <div class="flex flex-col gap-4">
           <div class="flex flex-col flex-1 gap-4 mb-4">
             <Card
+                
                 type="cart"
                 title="Nike Blazer Mid Suede FDSLj lkfdsjfosdj fdskl fjds iodfjaioijsdfjiosdj"
                 imageUrl="sneakers/sneakers-1.jpg"
@@ -43,19 +44,19 @@ defineProps<IAsideComponentProps>();
             />
           </div>
           <div class="flex gap-2">
-            <span> Налог: </span>
+            <span> tax: </span>
             <div class="flex-1 border-b border-dashed"></div>
-            <b> {{ totalSum * 0.05 }} руб </b>
+            <b> {{ totalSum * 0.05 }} $ </b>
           </div>
           <div class="flex gap-2">
-            <span> Итого: </span>
+            <span> total: </span>
             <div class="flex-1 border-b border-dashed"></div>
-            <b> {{ totalSum }} руб </b>
+            <b> {{ totalSum }} $ </b>
           </div>
           <button
               class="mt-7 transition bg-lime-500 w-full rounded-xl py-3 text-white disabled:bg-slate-300 hover:"
               disabled
-          > Оформить заказ </button>
+          > create an order </button>
         </div>
       </div>
       <div v-else-if="content === 'liked'">
