@@ -1,4 +1,4 @@
-export type TProductCardType = "catalog" | "cart";
+export type TProductCardType = "catalog" | "cart" | "liked";
 export interface IProduct {
     id?: number,
     title: string,

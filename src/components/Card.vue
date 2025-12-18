@@ -54,12 +54,18 @@
       <p> {{title}} </p>
       <div class="flex justify-between mt-2">
         <span>{{ price }}</span>
-        <div @click="undefined">
-          <img
-              src="/close.svg"
-              alt="Close"
-          />
-        </div>
+      </div>
+    </div>
+  </div>
+    <div
+    v-else-if="type === 'liked'"
+    class="flex items-center gap-4 border border-slate-200 p-4 rounded-xl"
+  >
+    <img class="w-16 h-16" :src="imageUrl" alt="Sneaker"/>
+    <div class="flex w-full flex-col">
+      <p> {{title}} </p>
+      <div class="flex justify-between mt-2">
+        <span>{{ price }}</span>
       </div>
     </div>
   </div>

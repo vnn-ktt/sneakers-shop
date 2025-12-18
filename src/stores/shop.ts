@@ -17,7 +17,7 @@ export const useShopStore = defineStore('shop', () => {
     const getLikedCount = computed(() => likedProducts.value.length)
     const getCartCount = computed(() => cartedProducts.value.length)
     const getTotalSum = computed(() => {
-        cartedProducts.value.reduce((a: number, p: IProduct): number => a += p.price, 0);
+        return cartedProducts.value.reduce((a: number, p: IProduct): number => a += p.price, 0);
     })
 
     function toggleLikeProduct(product: IProduct): void {

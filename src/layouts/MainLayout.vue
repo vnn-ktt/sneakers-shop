@@ -5,7 +5,6 @@
   import { useShopStore } from "@/stores/shop";
   
   const shopStore = useShopStore();
-  const totalSum = shopStore.getTotalSum;
   const isCartOpen = ref<boolean>(false);
   const isLikedOpen = ref<boolean>(false);
 
@@ -35,11 +34,12 @@
               @click="toggleCartHeader"
           >
             <img src="/cart.svg" alt="Cart">
-            {{ totalSum }} $
+            {{ shopStore.getTotalSum }} $
           </button>
           <AsidePanel
               v-if="isCartOpen"
               content="cart"
+              title="cart"
               @close="isCartOpen = false"
           />
         </li>
@@ -54,6 +54,7 @@
           <AsidePanel
               v-if="isLikedOpen"
               content="liked"
+              title="liked"
               @close="isLikedOpen = false"
           />
         </li>

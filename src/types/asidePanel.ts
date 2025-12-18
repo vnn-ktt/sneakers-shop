@@ -1,4 +1,5 @@
 export type TAsideContent = 'cart' | 'liked';
 export interface IAsideComponentProps {
-    content: TAsideContent
+    content: TAsideContent,
+    title: string
 }
