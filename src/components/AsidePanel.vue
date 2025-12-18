@@ -39,7 +39,7 @@ defineProps<IAsideComponentProps>();
                 :price="5000"
                 :isCarted="false"
                 :isLiked="false"
-                :onClickDelete="onClickDelete"
+                :onClickDelete="undefined"
             />
           </div>
           <div class="flex gap-2">

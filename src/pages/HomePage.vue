@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { onMounted, ref, watch, reactive, provide } from "vue";
+  import { watch, reactive, provide } from "vue";
   import CardList from "@/components/CardList.vue";
   import {
     getProducts
@@ -8,8 +8,10 @@
     IProduct
   } from "@/types/product";
   import type { IQueryParams } from "@/types/api";
+  import { useShopStore } from "@/stores/shop";
 
-  const items = ref<IProduct[]>([]);
+  const shopStore = useShopStore();
+
   const filters = reactive<IQueryParams>({
     sortBy: 'title',
     title: '*'
@@ -26,19 +28,16 @@
         `*${(evt.target as HTMLSelectElement)?.value}*` || '';
   };
   const likeProduct = (item: IProduct) => {
-    item.isLiked = !item.isLiked;
+    shopStore.toggleLikeProduct(item)
   };
   const cartProduct = (item: IProduct) => {
-    item.isCarted = !item.isCarted;
+    shopStore.toggleCartProduct(item)
   };
 
   provide("onLikeProduct", likeProduct);
   provide("onCartProduct", cartProduct);
-  onMounted(async () => {
-    items.value = await getProducts(filters);
-  });
   watch(filters, async () => {
-    items.value = await getProducts(filters)
+    await shopStore.fetchProducts(filters);
   });
 </script>
 <template>
@@ -65,6 +64,6 @@
           <option value="-price">by price (expensive)</option>
         </select>
     </div>
-    <CardList :items="items" />
+    <CardList :items="shopStore.products" />
   </div>
 </template>

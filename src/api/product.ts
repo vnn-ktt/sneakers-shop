@@ -14,7 +14,6 @@ export const getProducts =
         `https://db8e4288b5ac21f4.mokky.dev/items`,
         { params }
     );
-    console.log(response);
     return response.data;
 }
 

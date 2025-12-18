@@ -20,7 +20,7 @@
 </script>
 
 <template>
-  <div class="grid grid-cols-2 gap-8">
+  <div class="grid grid-cols-2 gap-8 lg:grid-cols-3">
       <Card
           v-for="item in items"
           :key="item.id"

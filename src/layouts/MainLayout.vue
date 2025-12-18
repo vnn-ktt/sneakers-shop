@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import {RouterView} from "vue-router";
+  import { RouterView } from "vue-router";
   import { ref } from "vue";
   import AsidePanel from "@/components/AsidePanel.vue";
 
@@ -68,7 +68,3 @@
     </footer>
   </div>
 </template>
-
-<style scoped>
-
-</style>

@@ -33,7 +33,7 @@
     <div class="flex justify-between items-end">
       <div class="flex flex-col">
         <span class="text-slate-400">
-          Цена
+          Price ($)
         </span>
         <span>{{ price }}</span>
       </div>
